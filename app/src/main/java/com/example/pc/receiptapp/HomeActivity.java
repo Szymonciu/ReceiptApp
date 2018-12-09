@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void openDialog() {
         InfoDialog infoDialog = new InfoDialog();
-        infoDialog.show(getSupportFragmentManager(), "Info Dialog");
+        infoDialog.show(getSupportFragmentManager(), "Dialog");
     }
 
     private void openactivity_list_of_receipt() {
