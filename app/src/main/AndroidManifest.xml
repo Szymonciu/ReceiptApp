@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.pc.receiptapp">
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,6 +21,7 @@
         <activity android:name=".features.home.HomeActivity" />
         <activity android:name=".AddReceipt" />
         <activity android:name=".ListOfReceipt" />
+        <activity android:name=".features.list.ReceiptListActivity"></activity>
     </application>
 
 </manifest>
