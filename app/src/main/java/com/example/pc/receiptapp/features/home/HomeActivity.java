@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.pc.receiptapp.AddReceipt;
 import com.example.pc.receiptapp.InfoDialog;
 import com.example.pc.receiptapp.R;
+import com.example.pc.receiptapp.features.addreceipt.AddReceiptActivity;
 import com.example.pc.receiptapp.features.list.ReceiptListActivity;
 
 public class HomeActivity extends AppCompatActivity implements HomeContract.View {
@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     public void openAddReceiptScreen() {
-        Intent intent = new Intent(this, AddReceipt.class);
+        Intent intent = new Intent(this, AddReceiptActivity.class);
         startActivity(intent);
     }
 
