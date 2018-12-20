@@ -10,6 +10,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.pc.receiptapp.R;
@@ -21,12 +22,13 @@ import java.util.Date;
 
 public class AddReceiptActivity extends AppCompatActivity {
 
+    private EditText receiptText;
 
     private TextInputLayout textInputName;
     private TextInputLayout textInputDate;
     private TextInputLayout textInputplace;
 
-    private Button addREceipt;
+    private Button addReceipt;
     private Button addPhoto;
 
     private ImageView receiptPhoto;
@@ -34,8 +36,6 @@ public class AddReceiptActivity extends AppCompatActivity {
     private Uri photoURI;
     private static final int REQUEST_TAKE_PHOTO = 1;
 
-
-    private Button AddReceipt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,19 @@ public class AddReceiptActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        receiptText = findViewById(R.id.receipt_title);
         receiptPhoto = findViewById(R.id.receipt_photo);
+        addReceipt = findViewById(R.id.confirm);
+        addReceipt.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                String receiptTitle = receiptText.getText().toString();
+//                RealmReceipt realmReceipt = new RealmReceipt("1", "TV", "Saturn", "12.12.12", "");
+//                LocalDataSource.save(realmReceipt);
+
+            }
+        });
         addPhoto = findViewById(R.id.add_photo_button);
         addPhoto.setOnClickListener(new View.OnClickListener() {
             @Override

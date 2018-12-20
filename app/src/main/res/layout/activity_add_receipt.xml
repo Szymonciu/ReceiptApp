@@ -22,7 +22,8 @@
             app:errorEnabled="true">
 
 
-            <android.support.design.widget.TextInputEditText
+            <EditText
+                android:id="@+id/receipt_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/what_you_buy_on_that_receipt" />
@@ -62,11 +63,7 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:id="@+id/confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Confrm" />
+
 
         <Button
             android:id="@+id/add_photo_button"
@@ -74,6 +71,12 @@
             android:layout_height="wrap_content"
             android:textAllCaps="false"
             android:text="@string/add_photo" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Confrm" />
 
         <ImageView
             android:layout_margin="8dp"
