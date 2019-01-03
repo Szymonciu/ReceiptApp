@@ -61,6 +61,7 @@ public class AddReceiptActivity extends AppCompatActivity {
 
                 RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle, receiptPurchaseLocation, receiptDate, photoURI.toString());
                 LocalDataSource.save(realmReceipt);
+                finish();
 
             }
         });

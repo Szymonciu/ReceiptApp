@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.pc.receiptapp.R;
 import com.example.pc.receiptapp.core.Receipt;
+import com.example.pc.receiptapp.database.LocalDataSource;
+import com.example.pc.receiptapp.database.RealmReceipt;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReceiptListActivity extends AppCompatActivity {
@@ -37,11 +39,20 @@ public class ReceiptListActivity extends AppCompatActivity {
     }
 
     private void initAdapter() {
-        List<Receipt> receiptList = Arrays.asList(
-                new Receipt("Winter Boots"),
-                new Receipt("Alkohol"),
-                new Receipt("Computer")
-        );
+//        List<Receipt> receiptList = Arrays.asList(
+//                new Receipt("Winter Boots"),
+//                new Receipt("Alkohol"),
+//                new Receipt("Computer")
+//        );
+        List<Receipt> receiptList = new ArrayList<>();
+        List<RealmReceipt> realmReceipts = LocalDataSource.getAll();
+        for (RealmReceipt realmReceipt : realmReceipts) {
+            Receipt receipt = new Receipt(realmReceipt.getTitle(), realmReceipt.getPlace(),
+                    realmReceipt.getDate(), realmReceipt.getImagePath());
+
+            receiptList.add(receipt);
+        }
+
         adapter.setReceiptList(receiptList);
     }
 }

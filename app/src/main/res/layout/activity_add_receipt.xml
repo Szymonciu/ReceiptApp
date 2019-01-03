@@ -41,8 +41,8 @@
 
             <EditText
                 android:id="@+id/receipt_purchase_location"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/pleace_of_buying_receipt" />
 
 
@@ -58,8 +58,8 @@
 
             <EditText
                 android:id="@+id/receipt_date"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:hint="@string/date_of_buying" />
 
 
