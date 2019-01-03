@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.pc.receiptapp.R;
+import com.example.pc.receiptapp.database.LocalDataSource;
+import com.example.pc.receiptapp.database.RealmReceipt;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +23,10 @@ import java.util.Date;
 
 public class AddReceiptActivity extends AppCompatActivity {
 
-    private EditText receiptText;
+    private EditText receiptTitleEditText;
+    private EditText receiptPurchaseLocationEditText;
+    private EditText receiptDateEditText;
 
-    private TextInputLayout textInputName;
-    private TextInputLayout textInputDate;
-    private TextInputLayout textInputplace;
 
     private Button addReceipt;
     private Button addPhoto;
@@ -46,16 +46,21 @@ public class AddReceiptActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        receiptText = findViewById(R.id.receipt_title);
+        receiptPurchaseLocationEditText = findViewById(R.id.receipt_purchase_location);
+        receiptDateEditText = findViewById(R.id.receipt_date);
+        receiptTitleEditText = findViewById(R.id.receipt_title);
         receiptPhoto = findViewById(R.id.receipt_photo);
         addReceipt = findViewById(R.id.confirm);
         addReceipt.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String receiptTitle = receiptText.getText().toString();
-//                RealmReceipt realmReceipt = new RealmReceipt("1", "TV", "Saturn", "12.12.12", "");
-//                LocalDataSource.save(realmReceipt);
+                String receiptTitle = receiptTitleEditText.getText().toString();
+                String receiptPurchaseLocation = receiptPurchaseLocationEditText.getText().toString();
+                String receiptDate = receiptDateEditText.getText().toString();
+
+                RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle, receiptPurchaseLocation, receiptDate, photoURI.toString());
+                LocalDataSource.save(realmReceipt);
 
             }
         });

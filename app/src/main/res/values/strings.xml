@@ -8,7 +8,7 @@
     <string name="text_input_name">text_input_name</string>
     <string name="text_input_pleace">text_input_pleace</string>
     <string name="text_input_date">text_input_date</string>
-    <string name="Confrm">button_confirm</string>
+    <string name="Confrm">Button Confirm</string>
     <string name="date_of_buying">Date of buying</string>
     <string name="pleace_of_buying_receipt">Pleace of buying receipt</string>
     <string name="what_you_buy_on_that_receipt">What you buy on that receipt</string>

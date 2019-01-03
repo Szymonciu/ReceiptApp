@@ -6,7 +6,7 @@ import io.realm.annotations.PrimaryKey;
 public class RealmReceipt extends RealmObject {
 
     @PrimaryKey
-    private String id;
+    private Long id;
     private String title;
     private String place;
     private String date;
@@ -16,7 +16,7 @@ public class RealmReceipt extends RealmObject {
 
     }
 
-    public RealmReceipt(String id, String title, String place, String date, String imagePath) {
+    public RealmReceipt(Long id, String title, String place, String date, String imagePath) {
         this.id = id;
         this.title = title;
         this.place = place;
@@ -24,7 +24,7 @@ public class RealmReceipt extends RealmObject {
         this.imagePath = imagePath;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
