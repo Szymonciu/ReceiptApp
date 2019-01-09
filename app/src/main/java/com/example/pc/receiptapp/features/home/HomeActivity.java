@@ -59,8 +59,8 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         presenter.detachView();
+        super.onDestroy();
     }
 
     private void initPresenter() {

@@ -8,16 +8,14 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.pc.receiptapp.R;
 import com.example.pc.receiptapp.core.Receipt;
-import com.example.pc.receiptapp.database.LocalDataSource;
-import com.example.pc.receiptapp.database.RealmReceipt;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptListActivity extends AppCompatActivity {
+public class ReceiptListActivity extends AppCompatActivity implements ReceiptListContract.View {
 
     private RecyclerView recyclerView;
     private ReceiptListAdapter adapter;
+    private ReceiptListContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +23,18 @@ public class ReceiptListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt_list);
 
         setupRecycler();
-        initAdapter();
+        initPresenter();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
+    }
+
+    private void initPresenter() {
+        presenter = new ReceiptListPresenter();
+        presenter.attackView(this);
     }
 
     private void setupRecycler() {
@@ -38,21 +47,9 @@ public class ReceiptListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void initAdapter() {
-//        List<Receipt> receiptList = Arrays.asList(
-//                new Receipt("Winter Boots"),
-//                new Receipt("Alkohol"),
-//                new Receipt("Computer")
-//        );
-        List<Receipt> receiptList = new ArrayList<>();
-        List<RealmReceipt> realmReceipts = LocalDataSource.getAll();
-        for (RealmReceipt realmReceipt : realmReceipts) {
-            Receipt receipt = new Receipt(realmReceipt.getTitle(), realmReceipt.getPlace(),
-                    realmReceipt.getDate(), realmReceipt.getImagePath());
 
-            receiptList.add(receipt);
-        }
-
+    @Override
+    public void showReceiptList(List<Receipt> receiptList) {
         adapter.setReceiptList(receiptList);
     }
 }
