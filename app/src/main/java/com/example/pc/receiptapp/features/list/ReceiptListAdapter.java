@@ -42,21 +42,21 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
     public class ReceiptViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
-        private TextView text_input_pleace;
-        private TextView text_input_date;
+        private TextView place;
+        private TextView date;
 
         public ReceiptViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
-            text_input_date = itemView.findViewById(R.id.text_input_date);
-            text_input_pleace = itemView.findViewById(R.id.text_input_pleace);
+            date = itemView.findViewById(R.id.date);
+            place = itemView.findViewById(R.id.place);
         }
 
         public void bind(Receipt receipt) {
 
             title.setText(receipt.getTitle());
-            text_input_pleace.setText(receipt.getPlace());
-            text_input_date.setText(receipt.getDate());
+            place.setText(receipt.getPlace());
+            date.setText(receipt.getDate());
         }
 
     }
