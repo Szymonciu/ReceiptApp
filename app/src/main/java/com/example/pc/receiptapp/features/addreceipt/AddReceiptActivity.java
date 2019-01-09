@@ -21,11 +21,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddReceiptActivity extends AppCompatActivity {
+public class AddReceiptActivity extends AppCompatActivity implements AddReceiptContract.View {
 
     private EditText receiptTitleEditText;
     private EditText receiptPurchaseLocationEditText;
     private EditText receiptDateEditText;
+    private AddReceiptContract.Presenter presenter;
 
 
     private Button addReceipt;
@@ -43,6 +44,18 @@ public class AddReceiptActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_receipt);
 
         initViews();
+        initPresenter();
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
+    }
+
+    private void initPresenter() {
+        presenter = new AddReceiptPresenter();
+        presenter.attackView(this);
     }
 
     private void initViews() {
@@ -69,7 +82,7 @@ public class AddReceiptActivity extends AppCompatActivity {
         addPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dispatchTakePictureIntent();
+                presenter.onTakePhotoButtonClicked();
             }
         });
     }
@@ -121,4 +134,13 @@ public class AddReceiptActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void closeScreen() {
+        finish();
+    }
+
+    @Override
+    public void openTakePhotoScreen() {
+        dispatchTakePictureIntent();
+    }
 }
