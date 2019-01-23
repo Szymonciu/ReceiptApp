@@ -1,5 +1,7 @@
 package com.example.pc.receiptapp.features.addreceipt;
 
+import android.net.Uri;
+
 import com.example.pc.receiptapp.core.BaseContract;
 
 public interface AddReceiptContract {
@@ -8,11 +10,13 @@ public interface AddReceiptContract {
 
         void openTakePhotoScreen();
 
+        void showFieldsMustNotBeEmptyMessage();
+
 
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
-        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, String imageURI);
+        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, Uri imageURI);
 
         void onTakePhotoButtonClicked();
 

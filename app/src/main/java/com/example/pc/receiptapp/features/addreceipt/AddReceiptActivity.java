@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.pc.receiptapp.R;
 
@@ -69,7 +70,7 @@ public class AddReceiptActivity extends AppCompatActivity implements AddReceiptC
                 String receiptTitle = receiptTitleEditText.getText().toString();
                 String receiptPurchaseLocation = receiptPurchaseLocationEditText.getText().toString();
                 String receiptDate = receiptDateEditText.getText().toString();
-                presenter.onConfirmButtonClicked(receiptTitle, receiptPurchaseLocation, receiptDate, photoURI.toString());
+                presenter.onConfirmButtonClicked(receiptTitle, receiptPurchaseLocation, receiptDate, photoURI);
 
             }
         });
@@ -137,5 +138,10 @@ public class AddReceiptActivity extends AppCompatActivity implements AddReceiptC
     @Override
     public void openTakePhotoScreen() {
         dispatchTakePictureIntent();
+    }
+
+    @Override
+    public void showFieldsMustNotBeEmptyMessage() {
+        Toast.makeText(this, "Fields must not be empty!", Toast.LENGTH_SHORT).show();
     }
 }
