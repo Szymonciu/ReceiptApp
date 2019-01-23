@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
 
     private void initPresenter() {
         presenter = new HomePresenter();
-        presenter.attackView(this);
+        presenter.attachView(this);
     }
 
 

@@ -7,7 +7,7 @@ public interface BaseContract {
     }
 
     interface Presenter<T extends BaseContract.View> {
-        void attackView(T view);
+        void attachView(T view);
 
         void detachView();
     }

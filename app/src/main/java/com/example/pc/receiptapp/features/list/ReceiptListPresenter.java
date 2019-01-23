@@ -13,7 +13,7 @@ public class ReceiptListPresenter implements ReceiptListContract.Presenter {
 
 
     @Override
-    public void attackView(ReceiptListContract.View view) {
+    public void attachView(ReceiptListContract.View view) {
         this.view = view;
         getReceiptList();
     }

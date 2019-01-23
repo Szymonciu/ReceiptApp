@@ -34,7 +34,7 @@ public class ReceiptListActivity extends AppCompatActivity implements ReceiptLis
 
     private void initPresenter() {
         presenter = new ReceiptListPresenter();
-        presenter.attackView(this);
+        presenter.attachView(this);
     }
 
     private void setupRecycler() {

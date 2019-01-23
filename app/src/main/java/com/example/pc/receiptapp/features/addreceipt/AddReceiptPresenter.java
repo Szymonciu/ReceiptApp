@@ -1,11 +1,14 @@
 package com.example.pc.receiptapp.features.addreceipt;
 
+import com.example.pc.receiptapp.database.LocalDataSource;
+import com.example.pc.receiptapp.database.RealmReceipt;
+
 public class AddReceiptPresenter implements AddReceiptContract.Presenter {
 
     private AddReceiptContract.View view;
 
     @Override
-    public void attackView(AddReceiptContract.View view) {
+    public void attachView(AddReceiptContract.View view) {
         this.view = view;
     }
 
@@ -14,9 +17,14 @@ public class AddReceiptPresenter implements AddReceiptContract.Presenter {
         this.view = null;
     }
 
-    @Override
-    public void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate) {
 
+    @Override
+    public void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, String imageURI) {
+        RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle, receiptPurchaseLocation, receiptDate, imageURI);
+        LocalDataSource.save(realmReceipt);
+        if (view != null) {
+            view.closeScreen();
+        }
     }
 
     @Override
@@ -25,4 +33,6 @@ public class AddReceiptPresenter implements AddReceiptContract.Presenter {
             view.openTakePhotoScreen();
         }
     }
+
+
 }

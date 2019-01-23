@@ -13,8 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.pc.receiptapp.R;
-import com.example.pc.receiptapp.database.LocalDataSource;
-import com.example.pc.receiptapp.database.RealmReceipt;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +53,7 @@ public class AddReceiptActivity extends AppCompatActivity implements AddReceiptC
 
     private void initPresenter() {
         presenter = new AddReceiptPresenter();
-        presenter.attackView(this);
+        presenter.attachView(this);
     }
 
     private void initViews() {
@@ -71,10 +69,7 @@ public class AddReceiptActivity extends AppCompatActivity implements AddReceiptC
                 String receiptTitle = receiptTitleEditText.getText().toString();
                 String receiptPurchaseLocation = receiptPurchaseLocationEditText.getText().toString();
                 String receiptDate = receiptDateEditText.getText().toString();
-
-                RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle, receiptPurchaseLocation, receiptDate, photoURI.toString());
-                LocalDataSource.save(realmReceipt);
-                finish();
+                presenter.onConfirmButtonClicked(receiptTitle, receiptPurchaseLocation, receiptDate, photoURI.toString());
 
             }
         });

@@ -12,7 +12,7 @@ public interface AddReceiptContract {
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
-        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate);
+        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, String imageURI);
 
         void onTakePhotoButtonClicked();
 
