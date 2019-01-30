@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.pc.receiptapp.R;
 import com.example.pc.receiptapp.core.Receipt;
@@ -43,7 +44,12 @@ public class ReceiptListActivity extends AppCompatActivity implements ReceiptLis
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new ReceiptListAdapter();
+        adapter = new ReceiptListAdapter(new OnReceiptClickedLisner() {
+            @Override
+            public void onClick(Receipt receipt) {
+                Toast.makeText(ReceiptListActivity.this, receipt.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
     }
 

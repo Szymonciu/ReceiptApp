@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.pc.receiptapp.R;
@@ -16,6 +17,11 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
 
 
     private List<Receipt> receiptList;
+    private OnReceiptClickedLisner lisner;
+
+    public ReceiptListAdapter(OnReceiptClickedLisner lisner) {
+        this.lisner = lisner;
+    }
 
     public void setReceiptList(List<Receipt> receiptList) {
         this.receiptList = receiptList;
@@ -44,12 +50,14 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
         private TextView title;
         private TextView place;
         private TextView date;
+        private LinearLayout container;
 
         public ReceiptViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             date = itemView.findViewById(R.id.date);
             place = itemView.findViewById(R.id.place);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Receipt receipt) {
@@ -57,6 +65,12 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
             title.setText(receipt.getTitle());
             place.setText(receipt.getPlace());
             date.setText(receipt.getDate());
+            container.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    lisner.onClick(receipt);
+                }
+            });
         }
 
     }
