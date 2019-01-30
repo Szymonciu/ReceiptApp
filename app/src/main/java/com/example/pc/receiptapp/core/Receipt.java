@@ -1,6 +1,8 @@
 package com.example.pc.receiptapp.core;
 
-public class Receipt {
+import java.io.Serializable;
+
+public class Receipt implements Serializable {
     private String title;
     private String place;
     private String date;
