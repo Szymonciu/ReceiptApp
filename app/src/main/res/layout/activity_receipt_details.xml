@@ -10,6 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:textStyle="bold"
         android:text="@string/Title" />
 
     <TextView
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_text"
         android:layout_margin="16dp"
+        android:textStyle="bold"
         android:text="@string/place" />
 
     <TextView
@@ -42,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/place_text"
+        android:textStyle="bold"
         android:layout_margin="16dp"
         android:text="@string/date" />
 
