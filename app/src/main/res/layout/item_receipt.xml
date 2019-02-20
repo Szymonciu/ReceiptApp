@@ -11,7 +11,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Paragon za buty zimowe" />
+        tools:text="Przykładowy tytul" />
 
     <TextView
         android:id="@+id/place"
