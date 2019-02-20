@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.pc.receiptapp.R;
 import com.example.pc.receiptapp.core.Receipt;
 
-public class ReceiptDetailsActivity extends AppCompatActivity {
+public class ReceiptDetailsActivity extends AppCompatActivity implements ReceiptDetailsContract.View {
 
     public static final String RECEIPT_KEY = "receipt key";
 
@@ -18,6 +18,8 @@ public class ReceiptDetailsActivity extends AppCompatActivity {
     private TextView date;
     private ImageView photo;
 
+    private ReceiptDetailsContract.Presenter presenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +27,13 @@ public class ReceiptDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receipt_details);
         Receipt receipt = (Receipt) getIntent().getSerializableExtra(RECEIPT_KEY);
         initViews();
-        title.setText(receipt.getTitle());
-        place.setText(receipt.getPlace());
-        date.setText(receipt.getDate());
-        photo.setImageURI(Uri.parse(receipt.getImagePath()));
+        initPresenter();
+        presenter.onReceiptSuccessfullyRetrieved(receipt);
+    }
 
+    private void initPresenter() {
+        presenter = new ReceiptDetailsPresenter();
+        presenter.attachView(this);
     }
 
     private void initViews() {
@@ -40,4 +44,17 @@ public class ReceiptDetailsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void showReceipt(Receipt receipt) {
+        title.setText(receipt.getTitle());
+        place.setText(receipt.getPlace());
+        date.setText(receipt.getDate());
+        photo.setImageURI(Uri.parse(receipt.getImagePath()));
+    }
+
+    @Override
+    protected void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
+    }
 }
