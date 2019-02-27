@@ -16,4 +16,5 @@
     <string name="Title">Title:</string>
     <string name="place">Place:</string>
     <string name="date">Date:</string>
+    <string name="deleteAlertMessage">Are you sure to delete this receipt?</string>
 </resources>

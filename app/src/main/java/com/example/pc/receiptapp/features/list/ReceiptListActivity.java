@@ -77,7 +77,7 @@ public class ReceiptListActivity extends AppCompatActivity implements ReceiptLis
     public void showDeleteAlert() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.app_name)
-                .setMessage("Are you sure to delete this receipt?")
+                .setMessage(R.string.deleteAlertMessage)
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
