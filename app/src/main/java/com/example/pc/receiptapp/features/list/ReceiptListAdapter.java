@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,10 +18,10 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
 
 
     private List<Receipt> receiptList;
-    private OnReceiptClickedLisner lisner;
+    private OnReceiptClickedListener listener;
 
-    public ReceiptListAdapter(OnReceiptClickedLisner lisner) {
-        this.lisner = lisner;
+    public ReceiptListAdapter(OnReceiptClickedListener listener) {
+        this.listener = listener;
     }
 
     public void setReceiptList(List<Receipt> receiptList) {
@@ -45,12 +46,19 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
         return receiptList.size();
     }
 
+    public void deleteItem(Receipt receipt) {
+        int position = receiptList.indexOf(receipt);
+        receiptList.remove(receipt);
+        notifyItemRemoved(position);
+    }
+
     public class ReceiptViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title;
         private TextView place;
         private TextView date;
         private RelativeLayout container;
+        private ImageView delete;
 
         public ReceiptViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +66,7 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
             date = itemView.findViewById(R.id.date);
             place = itemView.findViewById(R.id.place);
             container = itemView.findViewById(R.id.container);
+            delete = itemView.findViewById(R.id.delete);
         }
 
         public void bind(Receipt receipt) {
@@ -65,10 +74,16 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
             title.setText(receipt.getTitle());
             place.setText(receipt.getPlace());
             date.setText(receipt.getDate());
+            delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onTrashIconClick(receipt);
+                }
+            });
             container.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    lisner.onClick(receipt);
+                    listener.onItemClick(receipt);
                 }
             });
         }

@@ -27,4 +27,14 @@ public class LocalDataSource {
         realmReceipts.addAll(copiedResult);
         return realmReceipts;
     }
+
+    public static void delete(RealmReceipt realmReceipt) {
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        final RealmResults<RealmReceipt> receiptRealmResults =
+                realm.where(RealmReceipt.class).equalTo("id", realmReceipt.getId()).findAll();
+        receiptRealmResults.deleteAllFromRealm();
+        realm.commitTransaction();
+        realm.close();
+    }
 }

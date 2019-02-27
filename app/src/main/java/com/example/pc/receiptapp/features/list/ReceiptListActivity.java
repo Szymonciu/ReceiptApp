@@ -1,7 +1,9 @@
 package com.example.pc.receiptapp.features.list;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,11 +47,15 @@ public class ReceiptListActivity extends AppCompatActivity implements ReceiptLis
         recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter = new ReceiptListAdapter(new OnReceiptClickedLisner() {
+        adapter = new ReceiptListAdapter(new OnReceiptClickedListener() {
             @Override
-            public void onClick(Receipt receipt) {
+            public void onItemClick(Receipt receipt) {
                 openReceiptDetails(receipt);
-//                Toast.makeText(ReceiptListActivity.this, receipt.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onTrashIconClick(Receipt receipt) {
+                presenter.onTrashIconClick(receipt);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -65,5 +71,31 @@ public class ReceiptListActivity extends AppCompatActivity implements ReceiptLis
     @Override
     public void showReceiptList(List<Receipt> receiptList) {
         adapter.setReceiptList(receiptList);
+    }
+
+    @Override
+    public void showDeleteAlert() {
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.app_name)
+                .setMessage("Are you sure to delete this receipt?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        presenter.onDeleteAccepted();
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create()
+                .show();
+    }
+
+    @Override
+    public void deleteItem(Receipt receipt) {
+        adapter.deleteItem(receipt);
     }
 }

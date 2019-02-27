@@ -3,13 +3,15 @@ package com.example.pc.receiptapp.core;
 import java.io.Serializable;
 
 public class Receipt implements Serializable {
+    private Long id;
     private String title;
     private String place;
     private String date;
     private String imagePath;
 
 
-    public Receipt(String title, String place, String date, String imagePath) {
+    public Receipt(Long id, String title, String place, String date, String imagePath) {
+        this.id = id;
         this.title = title;
         this.place = place;
         this.date = date;
@@ -32,10 +34,15 @@ public class Receipt implements Serializable {
         return imagePath;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Receipt{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", place='" + place + '\'' +
                 ", date='" + date + '\'' +
                 ", imagePath='" + imagePath + '\'' +
