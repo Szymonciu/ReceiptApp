@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.pc.receiptapp.R;
@@ -50,7 +50,7 @@ public class ReceiptListAdapter extends RecyclerView.Adapter<ReceiptListAdapter.
         private TextView title;
         private TextView place;
         private TextView date;
-        private LinearLayout container;
+        private RelativeLayout container;
 
         public ReceiptViewHolder(@NonNull View itemView) {
             super(itemView);
