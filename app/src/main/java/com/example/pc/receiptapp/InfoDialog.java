@@ -10,8 +10,8 @@ public class InfoDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Nice to know")
-                .setMessage("This app understand your problems with receipt. We will remeber all the receipts 4u!")
+        builder.setTitle("Nice to know!")
+                .setMessage("This app understand your problems with receipts. We will remember all the receipts 4u!")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int i) {

@@ -17,7 +17,6 @@ public class HomeActivity extends AppCompatActivity implements HomeContract.View
     private Button addReceipt;
     private Button listOfReceipt;
     private ImageView infoIcon;
-
     private HomeContract.Presenter presenter;
 
     @Override

@@ -12,14 +12,13 @@ public interface AddReceiptContract {
 
         void showFieldsMustNotBeEmptyMessage();
 
-
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
-        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, Uri imageURI);
+        void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation,
+                                    String receiptDate, Uri imageURI);
 
         void onTakePhotoButtonClicked();
-
 
     }
 }

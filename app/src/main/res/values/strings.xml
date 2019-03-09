@@ -2,13 +2,13 @@
     <string name="app_name">ReceiptApp</string>
     <string name="add_receipt">Add Receipt</string>
     <string name="list_of_receipt">List Of Receipt</string>
-    <string name="receipt_app">Receipt App</string>
+    <string name="receipt_app">RECEIPT APP</string>
     <string name="by_fishu_amp_chishu"><![CDATA[by Fishu&Chishu]]></string>
     <string name="welcome">Welcome!</string>
     <string name="text_input_name">text_input_name</string>
     <string name="text_input_pleace">text_input_pleace</string>
     <string name="text_input_date">text_input_date</string>
-    <string name="Confrm">Button Confirm</string>
+    <string name="Confrm">Confirm</string>
     <string name="date_of_buying">Date of buying</string>
     <string name="pleace_of_buying_receipt">Pleace of buying receipt</string>
     <string name="what_you_buy_on_that_receipt">What you buy on that receipt</string>
@@ -17,4 +17,5 @@
     <string name="place">Place:</string>
     <string name="date">Date:</string>
     <string name="deleteAlertMessage">Are you sure to delete this receipt?</string>
+    <string name="vers_1_2_0">vers 1.2.0</string>
 </resources>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.list.ReceiptListActivity">
+    tools:context=".features.list.ReceiptListActivity"
+    android:background="#FFFBEA">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"

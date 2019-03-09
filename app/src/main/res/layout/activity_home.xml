@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFBEA"
     tools:context=".features.home.HomeActivity">
 
 
@@ -28,9 +29,9 @@
         android:id="@+id/info_button"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_margin="8dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_margin="8dp"
         android:src="@drawable/ic_info" />
 
 
@@ -41,17 +42,18 @@
         android:layout_above="@id/add_receipt"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="151dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="113dp"
+        android:layout_marginBottom="78dp"
+        android:gravity="center"
         android:text="@string/receipt_app"
+        android:textStyle="bold"
         android:textSize="25sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_margin="8dp"
         android:layout_alignParentBottom="true"
-        android:text="@string/by_fishu_amp_chishu" />
+        android:layout_margin="8dp"
+        android:text="@string/vers_1_2_0" />
 </RelativeLayout>

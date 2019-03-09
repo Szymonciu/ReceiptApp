@@ -21,13 +21,16 @@ public class AddReceiptPresenter implements AddReceiptContract.Presenter {
 
 
     @Override
-    public void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation, String receiptDate, Uri imageURI) {
-        if (receiptTitle.isEmpty() || receiptDate.isEmpty() || receiptPurchaseLocation.isEmpty() || imageURI == null) {
+    public void onConfirmButtonClicked(String receiptTitle, String receiptPurchaseLocation,
+                                       String receiptDate, Uri imageURI) {
+        if (receiptTitle.isEmpty() || receiptDate.isEmpty() || receiptPurchaseLocation.isEmpty() ||
+                imageURI == null) {
             if (view != null) {
                 view.showFieldsMustNotBeEmptyMessage();
             }
         } else {
-            RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle, receiptPurchaseLocation, receiptDate, imageURI.toString());
+            RealmReceipt realmReceipt = new RealmReceipt(System.currentTimeMillis(), receiptTitle,
+                    receiptPurchaseLocation, receiptDate, imageURI.toString());
             LocalDataSource.save(realmReceipt);
             if (view != null) {
                 view.closeScreen();

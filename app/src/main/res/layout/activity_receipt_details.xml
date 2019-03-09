@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.details.ReceiptDetailsActivity">
+    tools:context=".features.details.ReceiptDetailsActivity"
+    android:background="#FFFBEA">
 
     <TextView
         android:id="@+id/title_text"
@@ -37,7 +38,7 @@
         android:layout_below="@+id/title_value"
         android:layout_alignParentEnd="true"
         android:layout_margin="16dp"
-        tools:text="Galeryja Krakowska" />
+        tools:text="Galeria Krakowska" />
 
     <TextView
         android:id="@+id/date_text"
