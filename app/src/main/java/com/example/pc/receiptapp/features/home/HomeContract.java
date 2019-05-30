@@ -12,6 +12,8 @@ public interface HomeContract {
     }
 
     interface Presenter extends BaseContract.Presenter<View> {
+        void onViewCreated();
+
         void onAddReceiptButtonClick();
 
         void onListOfReceiptButtonClick();
